@@ -132,7 +132,7 @@
             "Vías autorizadas para bicicletas (en azul)": capa_senderos,
             //"Fichero subido": control
         }
-        L.control.layers(baseLayers, overlays).addTo(map);
+        //L.control.layers(baseLayers, overlays).addTo(map);
     }
 
     window.addEventListener('load', function () {
