@@ -28,7 +28,7 @@
             }
           );
         
-          var topoign = L.tileLayer.wms(
+        var topoign = L.tileLayer.wms(
             //WMS.layer es para versiones mas modernas de leaflet
             //var topoign = L.WMS.layer(
             "http://www.ign.es/wms-inspire/mapa-raster?",
@@ -132,7 +132,7 @@
             "Vías autorizadas para bicicletas (en azul)": capa_senderos,
             //"Fichero subido": control
         }
-        //L.control.layers(baseLayers, overlays).addTo(map);
+        L.control.layers(baseLayers, overlays).addTo(map);
     }
 
     window.addEventListener('load', function () {
