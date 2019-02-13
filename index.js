@@ -130,7 +130,7 @@
             "Zonificación PRUG ": zonasprug,
             //"Fotografía aérea PNOA": pnoa
             "Vías autorizadas para bicicletas (en azul)": capa_senderos,
-            //"Fichero subido": control
+            //"Fichero subido": layer
         }
         L.control.layers(baseLayers, overlays).addTo(map);
     }
