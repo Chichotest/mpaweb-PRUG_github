@@ -6,7 +6,8 @@
         //var control;
         var L = window.L;
         var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; 2013 OpenStreetMap contributors'
+            //attribution: 'Map data &copy; 2013 OpenStreetMap contributors'
+            attribution: 'Colaboradores de &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
         });
 
         var zonasprug = L.tileLayer.wms(
@@ -15,7 +16,8 @@
             //"http://www.idecyl.jcyl.es/geoserver/am/wms",
             //"AM.pn_cyl_sg_zonif_s",
             {
-              attribution: 'IDECYL. Junta de Castilla-León',
+              //attribution: 'IDECYL. Junta de Castilla-León',
+              attribution: 'Cartografía P.R.U.G. a partir de &copy <a href="http://www.idecyl.jcyl.es/geonetwork/srv/spa/catalog.search#/home">IDECYL Junta de Castilla y León</a> ',
               layers: "AM.pn_cyl_sg_zonif_s",
               format: "image/png",
               uppercase: true,
@@ -28,13 +30,14 @@
             }
           );
         
-          var topoign = L.tileLayer.wms(
+        var topoign = L.tileLayer.wms(
             //WMS.layer es para versiones mas modernas de leaflet
             //var topoign = L.WMS.layer(
             "http://www.ign.es/wms-inspire/mapa-raster?",
             //"mtn_rasterizado",
             {
-              attribution: "Topográfico ráster. Cedido por © Instituto Geográfico Nacional de España",
+              //attribution: "Topográfico ráster, cedido por © Instituto Geográfico Nacional de España",
+              attribution: 'Topográfico ráster cedido por &copy <a href="http://www.ign.es"> Instituto Geográfico Nacional de España</a> <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
               layers: "mtn_rasterizado",
               format: "image/png",
               uppercase: true,
@@ -54,8 +57,8 @@
               format: "image/png",
               //transparent: true,
               //version: "1.3.0", //wms version (ver get capabilities)
-              attribution:
-                "PNOA WMS. Cedido por © Instituto Geográfico Nacional de España",
+              //attribution: "PNOA WMS. Cedido por © Instituto Geográfico Nacional de España",
+             attribution: 'Ortofoto cedida por &copy <a href="http://www.ign.es"> Instituto Geográfico Nacional de España</a> <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
               //opacity: 0.5,
               uppercase: true,
               transparent: true,
@@ -66,6 +69,23 @@
               identify: false   
             }
           );
+
+        //CAPA DE MONTES DE UTILIDAD PUBLICA CAM
+        //var overlay_Montesdeutilidadpblica_0 = L.WMS.layer("https://idem.madrid.org/geoidem/Zonas/SIGI_MA_MONTES_UP/wms?request=GetCapabilities", "SIGI_MA_MONTES_UP", {
+            var overlay_Montesdeutilidadpblica_0 = L.tileLayer.wms(
+            "https://idem.madrid.org/geoidem/Zonas/SIGI_MA_MONTES_UP/wms?",
+            {
+            layers: "SIGI_MA_MONTES_UP",
+            format: 'image/png',
+            uppercase: true,
+            transparent: true,
+            continuousWorld : true,
+            tiled: true,
+            info_format: 'text/html',
+            opacity: 1,
+            identify: false,
+        });
+        //
 
         //CAPA SENDEROS BICICLETA A PARTIR DEL FICHERO senderos.js
         function estilo(feature) {
@@ -89,7 +109,8 @@
             //center: [0, 0],
             //zoom: 2,
             zoomControl:true, maxZoom:20, minZoom:11,
-            layers: [osm, zonasprug, capa_senderos, topoign]
+            //layers: [osm, zonasprug, capa_senderos, topoign, overlay_Montesdeutilidadpblica_0]             
+            layers: [osm, zonasprug, capa_senderos, topoign]             
         }).fitBounds([[40.6833316952,-4.18432124864],[41.0686841156,-3.65726153255]]);
     
         var style = {
@@ -118,8 +139,16 @@
             var layer = e.layer;
             console.log(layer);
         });
+        //Añadir boton de pantalla completa
+        //map.addControl(new L.Control.Fullscreen());
+        //map.addControl(new L.Control.Fullscreen({
+        //    title: {
+        //        'false': 'Vista a pantalla completa',
+        //        'true': 'Salir de pantalla compelta'
+        //    }
+        //}));
+        ///
         
-
         //selector de capas
         var baseLayers = {
             "Open Street map": osm,   
@@ -130,7 +159,8 @@
             "Zonificación PRUG ": zonasprug,
             //"Fotografía aérea PNOA": pnoa
             "Vías autorizadas para bicicletas (en azul)": capa_senderos,
-            //"Fichero subido": control
+            //"Fichero subido": layer
+            //"Montes de Utilidad Pública de la C.A.M.": overlay_Montesdeutilidadpblica_0
         }
         L.control.layers(baseLayers, overlays).addTo(map);
     }
