@@ -160,7 +160,7 @@
             //"Fotografía aérea PNOA": pnoa
             "Vías autorizadas para bicicletas (en azul)": capa_senderos,
             //"Fichero subido": layer
-            "Montes de Utilidad Pública de la C.A.M.": overlay_Montesdeutilidadpblica_0
+            //"Montes de Utilidad Pública de la C.A.M.": overlay_Montesdeutilidadpblica_0
         }
         L.control.layers(baseLayers, overlays).addTo(map);
     }
