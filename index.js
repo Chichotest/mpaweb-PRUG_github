@@ -11,14 +11,16 @@
         });
 
         var zonasprug = L.tileLayer.wms(
-            "http://www.idecyl.jcyl.es/geoserver/am/wms",
+            //"http://www.idecyl.jcyl.es/geoserver/am/wms",
+            "https://idecyl.jcyl.es/geoserver/am/wms",
             //Con leaflet 0.7.7 la calse es tileLayer.wms y el fromato de los servidores distinto
             //"http://www.idecyl.jcyl.es/geoserver/am/wms",
             //"AM.pn_cyl_sg_zonif_s",
             {
               //attribution: 'IDECYL. Junta de Castilla-León',
               attribution: 'Cartografía P.R.U.G. a partir de &copy <a href="http://www.idecyl.jcyl.es/geonetwork/srv/spa/catalog.search#/home">IDECYL Junta de Castilla y León</a> ',
-              layers: "AM.pn_cyl_sg_zonif_s",
+              //layers: "AM.pn_cyl_sg_zonif_s",
+              layers: "PRUG_PN_S_Guadarrama",
               format: "image/png",
               uppercase: true,
               transparent: true,
