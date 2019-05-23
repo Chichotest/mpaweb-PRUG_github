@@ -20,7 +20,8 @@
               //attribution: 'IDECYL. Junta de Castilla-León',
               attribution: 'Cartografía P.R.U.G. a partir de &copy <a href="http://www.idecyl.jcyl.es/geonetwork/srv/spa/catalog.search#/home">IDECYL Junta de Castilla y León</a> ',
               //layers: "AM.pn_cyl_sg_zonif_s",
-              layers: "PRUG_PN_S_Guadarrama",
+              //layers: "PRUG_PN_S_Guadarrama",
+              layers: "pn_cyl_sg_zonif_s",
               format: "image/png",
               uppercase: true,
               transparent: true,
@@ -94,6 +95,7 @@
             return {
                 weight: 2,
                 opacity: 1,
+                //color: 'red',
                 color: 'blue',
                 //dashArray: '3'                
 
